@@ -5,16 +5,12 @@
  */
 package Class;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import Class.Panneau;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import javax.swing.JTextField;
+import java.awt.MenuBar;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -22,7 +18,7 @@ import javax.swing.JButton;
  */
 public class Fenetre extends JFrame{
  
-    public Fenetre(String titre, int x, int y){
+    public Fenetre(String titre, int x, int y, String Ln){
         this.setTitle(titre);
         this.setSize(x,y);
         this.setLocationRelativeTo(null);
@@ -30,6 +26,17 @@ public class Fenetre extends JFrame{
         this.setResizable(true);
         Panneau pan = new Panneau();
         this.setContentPane(pan);
+        
+        pan.setLayout(null);
+        
+        JLabel welcome = new JLabel("Bienvenue "+Ln+" ");
+        welcome.setBounds(10, -40, 1000, 100);
+        pan.add(welcome);
+        
+        JLabel TaskList = new JLabel("Liste des tâches");
+        TaskList.setBounds(349, -10, 100, 100);
+        pan.add(TaskList);
+        
         this.setVisible(true);
     }
 }
