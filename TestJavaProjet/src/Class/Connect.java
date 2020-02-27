@@ -40,9 +40,11 @@ public class Connect extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        EntetePanel.setBackground(new java.awt.Color(227, 219, 228));
+        EntetePanel.setBackground(new java.awt.Color(153, 153, 153));
 
+        EnteteLabel.setBackground(new java.awt.Color(153, 153, 153));
         EnteteLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        EnteteLabel.setForeground(new java.awt.Color(255, 255, 255));
         EnteteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         EnteteLabel.setLabelFor(this);
         EnteteLabel.setText("Connexion");
@@ -52,19 +54,27 @@ public class Connect extends javax.swing.JFrame {
         EntetePanel.setLayout(EntetePanelLayout);
         EntetePanelLayout.setHorizontalGroup(
             EntetePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(EnteteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(EntetePanelLayout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(EnteteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(299, 299, 299))
         );
         EntetePanelLayout.setVerticalGroup(
             EntetePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(EnteteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
 
-        FormPanel.setBackground(new java.awt.Color(227, 219, 228));
+        FormPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        caseMDP.setText("jPasswordField1");
+        caseMDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseMDPActionPerformed(evt);
+            }
+        });
 
-        ConnexionButton.setBackground(new java.awt.Color(255, 255, 255));
+        ConnexionButton.setBackground(new java.awt.Color(102, 102, 102));
         ConnexionButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        ConnexionButton.setForeground(new java.awt.Color(255, 255, 255));
         ConnexionButton.setText("Connexion");
         ConnexionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,12 +82,14 @@ public class Connect extends javax.swing.JFrame {
             }
         });
 
-        MDPLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        MDPLabel.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        MDPLabel.setForeground(new java.awt.Color(255, 255, 255));
         MDPLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MDPLabel.setText("Mot de passe");
         MDPLabel.setToolTipText("");
 
-        NameLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        NameLabel.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        NameLabel.setForeground(new java.awt.Color(255, 255, 255));
         NameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NameLabel.setText("Nom");
 
@@ -86,18 +98,17 @@ public class Connect extends javax.swing.JFrame {
         FormPanelLayout.setHorizontalGroup(
             FormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FormPanelLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
                 .addGroup(FormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FormPanelLayout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addGroup(FormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MDPLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(caseNom, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(caseMDP)
-                            .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(FormPanelLayout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(ConnexionButton)))
+                    .addComponent(MDPLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(caseNom, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caseMDP)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(151, 151, 151))
+            .addGroup(FormPanelLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(ConnexionButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FormPanelLayout.setVerticalGroup(
             FormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,19 +130,19 @@ public class Connect extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(EntetePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(EntetePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(FormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(EntetePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(FormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -153,6 +164,10 @@ public class Connect extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_ConnexionButtonActionPerformed
+
+    private void caseMDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseMDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caseMDPActionPerformed
 
     /**
      * @param args the command line arguments
