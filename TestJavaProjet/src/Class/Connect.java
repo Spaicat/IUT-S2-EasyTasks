@@ -140,12 +140,18 @@ public class Connect extends javax.swing.JFrame {
     private void ConnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnexionButtonActionPerformed
         String nomSaisi = caseNom.getText();
         String MDPSaisi= caseMDP.getText();
+        
+        // données pour le test en attendant la base de données
         String FirstName = "marion";
-        String LastName = "tallandier";
         String mdp = "chouchou";
         
-        this.dispose();
-        Fenetre taches= new Fenetre("Tâches",800,400,nomSaisi);
+        if (nomSaisi.equals(FirstName) && MDPSaisi.equals(mdp)) {
+            this.dispose();
+            Fenetre taches= new Fenetre("Tâches",800,400,nomSaisi);
+        }else{
+            System.out.println("Données incorrectes");
+        }
+        
     }//GEN-LAST:event_ConnexionButtonActionPerformed
 
     /**
