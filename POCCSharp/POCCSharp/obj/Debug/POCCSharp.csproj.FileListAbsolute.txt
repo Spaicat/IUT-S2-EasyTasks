@@ -1,0 +1,8 @@
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\POCCSharp.exe.config
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\POCCSharp.exe
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\POCCSharp.pdb
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.csprojAssemblyReference.cache
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.Properties.Resources.resources
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.csproj.GenerateResource.cache
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.exe
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.pdb
