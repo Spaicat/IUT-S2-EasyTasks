@@ -5,6 +5,7 @@
  */
 package projetjava;
 
+import Class.ConnectPage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -26,6 +27,8 @@ public class ProjetJava {
         }catch(Exception e){
             System.out.println(e);    
         }
+        
+        ConnectPage ConnPage = new ConnectPage();
     }
     
 }

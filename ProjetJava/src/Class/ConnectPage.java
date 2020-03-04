@@ -16,6 +16,7 @@ public class ConnectPage extends javax.swing.JFrame {
      */
     public ConnectPage() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -67,6 +68,8 @@ public class ConnectPage extends javax.swing.JFrame {
         MDPLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MDPLabel.setText("Mot de passe");
 
+        ConnjButton.setBackground(new java.awt.Color(204, 204, 204));
+        ConnjButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         ConnjButton.setText("Connexion");
 
         javax.swing.GroupLayout ContenantPanelLayout = new javax.swing.GroupLayout(ContenantPanel);
@@ -86,7 +89,7 @@ public class ConnectPage extends javax.swing.JFrame {
                         .addGap(161, 161, 161))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenantPanelLayout.createSequentialGroup()
                         .addComponent(ConnjButton)
-                        .addGap(212, 212, 212))))
+                        .addGap(202, 202, 202))))
         );
         ContenantPanelLayout.setVerticalGroup(
             ContenantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +149,7 @@ public class ConnectPage extends javax.swing.JFrame {
             .addGroup(fondPanelLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addComponent(ContenantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondPanelLayout.createSequentialGroup()
                     .addComponent(EntêtePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
