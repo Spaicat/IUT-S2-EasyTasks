@@ -6,3 +6,11 @@ C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projet
 C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.csproj.GenerateResource.cache
 C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.exe
 C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.pdb
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\MySql.Data.dll
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\Google.Protobuf.dll
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\Renci.SshNet.dll
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\bin\Debug\MySql.Data.xml
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.csproj.CopyComplete
+C:\Users\Francis\Desktop\Travail\1er année DUT\Projets\Projet tutoré S2\projetTutS2\POCCSharp\POCCSharp\obj\Debug\POCCSharp.FormLogin.resources
