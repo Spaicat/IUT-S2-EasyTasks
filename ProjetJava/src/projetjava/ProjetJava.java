@@ -33,7 +33,8 @@ public class ProjetJava {
             System.out.println(e);
         }
         */
-
+       // ConnectBDD conn = new ConnectBDD();
+        ConnectBDD.ConnectBDD();
         ConnectPage ConnPage = new ConnectPage();
     }
     
