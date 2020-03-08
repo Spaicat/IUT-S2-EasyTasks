@@ -7,9 +7,10 @@ package projetjava;
 
 import Class.ConnectBDD;
 import Class.ConnectPage;
-import com.mysql.cj.xdevapi.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import Class.Fenetre;
+import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 
@@ -22,19 +23,10 @@ public class ProjetJava {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        /*
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC","root","root");
-            System.out.println("Connecté à la base de données");
-            
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        */
-       // ConnectBDD conn = new ConnectBDD();
-        ConnectBDD.ConnectBDD();
+    public static void main(String[] args){
+
+        
+        Connection conn = ConnectBDD.ConnectBDD();
         ConnectPage ConnPage = new ConnectPage();
     }
     

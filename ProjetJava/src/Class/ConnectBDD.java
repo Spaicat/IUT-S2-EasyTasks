@@ -5,6 +5,7 @@
  */
 package Class;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -13,6 +14,8 @@ import java.sql.DriverManager;
  * @author itsia
  */
 public class ConnectBDD {
+
+    
 
     private Connection conn = null;
     
@@ -29,4 +32,5 @@ public class ConnectBDD {
             return null;
         }
     }
+    
 }
