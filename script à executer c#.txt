@@ -1,10 +1,13 @@
+CREATE SCHEMA mydb;
+USE mydb;
+
 CREATE TABLE IF NOT EXISTS Utilisateur (
   ID INT NOT NULL,
   LOGIN VARCHAR(45) UNIQUE NOT NULL,
   PASSWORD VARCHAR(128),
   TYPE_UTILISATEUR VARCHAR(64),
   PRIMARY KEY(ID)
-)
+);
 
 CREATE TABLE IF NOT EXISTS commercial (
   ID INT NOT NULL,
@@ -13,7 +16,7 @@ CREATE TABLE IF NOT EXISTS commercial (
   pourcentage INT NULL,
   utilisateurID INT NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS Projet (
   ID INT NOT NULL,
@@ -28,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Projet (
     REFERENCES mydb.Commercial (ID)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-)
+);
 
 
 insert into commercial values 
