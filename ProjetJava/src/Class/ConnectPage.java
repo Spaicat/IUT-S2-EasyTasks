@@ -5,6 +5,14 @@
  */
 package Class;
 
+import java.awt.Component;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author itsia
@@ -30,8 +38,8 @@ public class ConnectPage extends javax.swing.JFrame {
 
         fondPanel = new javax.swing.JPanel();
         ContenantPanel = new javax.swing.JPanel();
-        NamejTextField = new javax.swing.JTextField();
-        MDPjPasswordField = new javax.swing.JPasswordField();
+        caseNom = new javax.swing.JTextField();
+        caseMDP = new javax.swing.JPasswordField();
         NameLabel = new javax.swing.JLabel();
         MDPLabel = new javax.swing.JLabel();
         ConnjButton = new javax.swing.JButton();
@@ -44,17 +52,17 @@ public class ConnectPage extends javax.swing.JFrame {
 
         ContenantPanel.setBackground(new java.awt.Color(102, 102, 102));
 
-        NamejTextField.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
-        NamejTextField.addActionListener(new java.awt.event.ActionListener() {
+        caseNom.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
+        caseNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NamejTextFieldActionPerformed(evt);
+                caseNomActionPerformed(evt);
             }
         });
 
-        MDPjPasswordField.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
-        MDPjPasswordField.addActionListener(new java.awt.event.ActionListener() {
+        caseMDP.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
+        caseMDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MDPjPasswordFieldActionPerformed(evt);
+                caseMDPActionPerformed(evt);
             }
         });
 
@@ -71,6 +79,11 @@ public class ConnectPage extends javax.swing.JFrame {
         ConnjButton.setBackground(new java.awt.Color(204, 204, 204));
         ConnjButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         ConnjButton.setText("Connexion");
+        ConnjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConnjButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ContenantPanelLayout = new javax.swing.GroupLayout(ContenantPanel);
         ContenantPanel.setLayout(ContenantPanelLayout);
@@ -83,8 +96,8 @@ public class ConnectPage extends javax.swing.JFrame {
                         .addGroup(ContenantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(MDPLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ContenantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(NamejTextField)
-                                .addComponent(MDPjPasswordField)
+                                .addComponent(caseNom)
+                                .addComponent(caseMDP)
                                 .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
                         .addGap(161, 161, 161))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenantPanelLayout.createSequentialGroup()
@@ -97,11 +110,11 @@ public class ConnectPage extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(caseNom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(MDPLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(MDPjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(caseMDP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(ConnjButton)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -170,13 +183,35 @@ public class ConnectPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NamejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamejTextFieldActionPerformed
+    private void caseNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NamejTextFieldActionPerformed
+    }//GEN-LAST:event_caseNomActionPerformed
 
-    private void MDPjPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDPjPasswordFieldActionPerformed
+    private void caseMDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseMDPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MDPjPasswordFieldActionPerformed
+    }//GEN-LAST:event_caseMDPActionPerformed
+
+    private void ConnjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnjButtonActionPerformed
+        String nomSaisi = caseNom.getText();
+        String MDPSaisi= caseMDP.getText();
+        try {
+            Connection conn = ConnectBDD.ConnectBDD();
+            Statement state = (Statement) conn.createStatement();
+            ResultSet result = state.executeQuery("SELECT * FROM Utilisateur WHERE LOGIN='"+nomSaisi+"'and PASSWORD='"+MDPSaisi+"'");
+            ResultSetMetaData resultMeta = result.getMetaData();
+            
+            
+            if (result.next()){
+                this.dispose();  
+            }else{
+                JOptionPane.showMessageDialog(null,"incorrect");
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+ 
+    }//GEN-LAST:event_ConnjButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,9 +254,9 @@ public class ConnectPage extends javax.swing.JFrame {
     private javax.swing.JLabel EnteteLabel;
     private javax.swing.JPanel EntêtePanel;
     private javax.swing.JLabel MDPLabel;
-    private javax.swing.JPasswordField MDPjPasswordField;
     private javax.swing.JLabel NameLabel;
-    private javax.swing.JTextField NamejTextField;
+    private javax.swing.JPasswordField caseMDP;
+    private javax.swing.JTextField caseNom;
     private javax.swing.JPanel fondPanel;
     // End of variables declaration//GEN-END:variables
 }
