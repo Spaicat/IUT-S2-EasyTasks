@@ -24,7 +24,7 @@ namespace POCCSharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            connexion = new MySqlConnection("database=projs2; server=localhost; user id=root");
+            connexion = new MySqlConnection("database=mydb; server=localhost; user id=root; pwd=root");
 
             try
             {
@@ -36,7 +36,9 @@ namespace POCCSharp
                 sda.Fill(dtbl);
                 if (dtbl.Rows.Count == 1)
                 {
-                    MessageBox.Show("Connecté");
+                    FormPrincipal mainMenu = new FormPrincipal(dtbl.Rows[0][1].ToString());
+                    mainMenu.Show();
+                    this.Hide();
                 }
                 else
                 {

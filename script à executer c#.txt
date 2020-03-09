@@ -1,0 +1,86 @@
+CREATE TABLE IF NOT EXISTS Utilisateur (
+  ID INT NOT NULL,
+  LOGIN VARCHAR(45) UNIQUE NOT NULL,
+  PASSWORD VARCHAR(128),
+  TYPE_UTILISATEUR VARCHAR(64),
+  PRIMARY KEY(ID)
+)
+
+CREATE TABLE IF NOT EXISTS commercial (
+  ID INT NOT NULL,
+  nom VARCHAR(45) NULL,
+  prenom VARCHAR(45) NOT NULL,
+  pourcentage INT NULL,
+  utilisateurID INT NOT NULL,
+  PRIMARY KEY (id)
+)
+
+CREATE TABLE IF NOT EXISTS Projet (
+  ID INT NOT NULL,
+  commercialID int,
+  nom varchar(45) NOT NULL,
+  duréeEstimée int,
+  duréeFinale int,
+  statut varchar(45),
+  PRIMARY KEY (ID),
+    CONSTRAINT fk_projetCommercial
+    FOREIGN KEY (commercialID)
+    REFERENCES mydb.Commercial (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+
+
+insert into commercial values 
+(1,'Flayol','Géraldine',5,11),
+(2,'Meunier','Carlos',3,12),
+(3,'Bringer','Julien',3,13);
+
+insert into Utilisateur values
+(1,'pmartin','746F746F','technicien'),
+(2,'cmeunier','746F746F','techicien'),
+(3,'ybenaissa','746F746F','techicien'),
+(4,'sollivier','746F746F','techicien'),
+(5,'sdjamel','746F746F','techicien'),
+(6,'llandure','746F746F','techicien'),
+(7,'gzilla','746F746F','techicien'),
+(8,'bdemongeot','746F746F','techicien'),
+(9,'jcouston','746F746F','techicien'),
+(10,'fpieux','746F746F','techicien'),
+(11,'gflayol','746F746F','commercial'),
+(12,'cmeunier2','746F746F','commercial'),
+(13,'jbringer','746F746F','commercial'),
+(14,'gdespierres','746F746F','client'),
+(15,'omeunier','746F746F','client'),
+(16,'abandoni','746F746F','client'),
+(17,'yqueffelec','746F746F','client'),
+(18,'cmiossec','746F746F','client'),
+(19,'llandure2','746F746F','client'),
+(20,'jnkoula','746F746F','client'),
+(21,'ljamot','746F746F','client'),
+(22,'gollivier','746F746F','client'),
+(23,'cdugue','746F746F','client'),
+(24,'gdespierres2','746F746F','client'),
+(25,'hclouzet','746F746F','client'),
+(26,'jbrossard','','client'),
+(27,'smayeur','','client'),
+(28,'vpicard','','client'),
+(29,'jlarochette','','client'),
+(30,'amaigne','','client'),
+(31,'ljamot2','','client'),
+(32,'grond','','client'),
+(33,'apopier','','client');
+
+insert into projet values
+(1,1,'smart city',500, 750, 'fini'),
+(2,2,'war gaming',200, NULL, ' en attente'),
+(3,1,'bitcoin',400,NULL , 'en cours'),
+(4,3,'siteWeb',500, 750, 'fini'),
+(5,2,'Entrprise 3.0',2000, NULL, ' en attente'),
+(6,1,'Try Me',400,NULL , 'en cours'),
+(7,1,'smart city',500, 750, 'fini'),
+(8,2,'dofus',2000, 1550, ' fini'),
+(9,1,'WoW',40000,NULL , 'en cours'),
+(10,1,'smart city',500, 750, 'fini'),
+(11,2,'site vitrine IUP',50, NULL, ' en attente'),
+(12,3,'innov''Dijon',1400,NULL , 'en cours');
