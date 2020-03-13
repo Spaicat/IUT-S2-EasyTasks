@@ -5,13 +5,18 @@
  */
 package Class;
 
+
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 
 
 
@@ -31,7 +36,7 @@ public class Fenetre extends JFrame{
         this.setContentPane(pan);
         
         pan.setLayout(null);
-  
+        
         this.setVisible(true);
     }
 }

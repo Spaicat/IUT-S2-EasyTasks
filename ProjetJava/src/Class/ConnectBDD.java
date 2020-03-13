@@ -23,7 +23,7 @@ public class ConnectBDD {
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://SRV-IQ-ETU/bdb2?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC","s2b2","helloween1");
             System.out.println("Connecté à la base de données");
             return conn;
  
@@ -32,5 +32,4 @@ public class ConnectBDD {
             return null;
         }
     }
-    
 }

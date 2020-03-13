@@ -5,12 +5,11 @@
  */
 package Class;
 
-import java.awt.Component;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +23,8 @@ public class ConnectPage extends javax.swing.JFrame {
      */
     public ConnectPage() {
         initComponents();
+        this.setTitle("EasyTasks");
+        this.setResizable(false);
         this.setVisible(true);
     }
 
@@ -151,18 +152,18 @@ public class ConnectPage extends javax.swing.JFrame {
         fondPanelLayout.setHorizontalGroup(
             fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondPanelLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(ContenantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(EntêtePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondPanelLayout.setVerticalGroup(
             fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondPanelLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondPanelLayout.createSequentialGroup()
+                .addContainerGap(137, Short.MAX_VALUE)
                 .addComponent(ContenantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
             .addGroup(fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondPanelLayout.createSequentialGroup()
                     .addComponent(EntêtePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +203,8 @@ public class ConnectPage extends javax.swing.JFrame {
             
             
             if (result.next()){
-                this.dispose();  
+                this.dispose();
+                écranaccueil menu = new écranaccueil();
             }else{
                 JOptionPane.showMessageDialog(null,"incorrect");
             }
@@ -210,7 +212,6 @@ public class ConnectPage extends javax.swing.JFrame {
             System.out.println(e);
         }
 
- 
     }//GEN-LAST:event_ConnjButtonActionPerformed
 
     /**
