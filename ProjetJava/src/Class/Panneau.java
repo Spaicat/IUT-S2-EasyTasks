@@ -13,5 +13,7 @@ import java.awt.Graphics;
  */
 public class Panneau extends JPanel{
     
-    
+    public Panneau(){
+        
+    }
 }
