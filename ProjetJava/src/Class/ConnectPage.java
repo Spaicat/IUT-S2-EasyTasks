@@ -5,11 +5,6 @@
  */
 package Class;
 
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +18,6 @@ public class ConnectPage extends javax.swing.JFrame {
      */
     public ConnectPage() {
         initComponents();
-        this.setTitle("EasyTasks");
-        this.setResizable(false);
         this.setVisible(true);
     }
 
@@ -152,18 +145,18 @@ public class ConnectPage extends javax.swing.JFrame {
         fondPanelLayout.setHorizontalGroup(
             fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondPanelLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addComponent(ContenantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
             .addGroup(fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(EntêtePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondPanelLayout.setVerticalGroup(
             fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondPanelLayout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+            .addGroup(fondPanelLayout.createSequentialGroup()
+                .addGap(133, 133, 133)
                 .addComponent(ContenantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(fondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondPanelLayout.createSequentialGroup()
                     .addComponent(EntêtePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,7 +188,17 @@ public class ConnectPage extends javax.swing.JFrame {
     private void ConnjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnjButtonActionPerformed
         String nomSaisi = caseNom.getText();
         String MDPSaisi= caseMDP.getText();
-        try {
+        ConnectBDD conn = new ConnectBDD();
+        conn.Connect();
+      //  Connection conn = ConnectBDD.ConnectBDD();
+        if(conn.connectUser(nomSaisi, MDPSaisi)==true){
+            JOptionPane.showMessageDialog(null,"Connexion réussie");
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null,"incorrect");
+        }
+        
+        /*try {
             Connection conn = ConnectBDD.ConnectBDD();
             Statement state = (Statement) conn.createStatement();
             ResultSet result = state.executeQuery("SELECT * FROM Utilisateur WHERE LOGIN='"+nomSaisi+"'and PASSWORD='"+MDPSaisi+"'");
@@ -203,15 +206,15 @@ public class ConnectPage extends javax.swing.JFrame {
             
             
             if (result.next()){
-                this.dispose();
-                écranaccueil menu = new écranaccueil();
+                this.dispose();  
             }else{
                 JOptionPane.showMessageDialog(null,"incorrect");
             }
         }catch(Exception e){
             System.out.println(e);
-        }
+        }*/
 
+ 
     }//GEN-LAST:event_ConnjButtonActionPerformed
 
     /**
