@@ -16,7 +16,6 @@ import java.util.Scanner;
  * @author itsia
  */
 public class EasyTask {
-
     /**
      * @param args the command line arguments
      */
@@ -41,20 +40,24 @@ public class EasyTask {
             //               technicien = log : pmartin | mdp : 746F746F
             //               client = log : abandoni | mdp : 746F746F
             
-            System.out.println("Choississez votre statut : "+"\n");
+            /*System.out.println("Choississez votre statut : "+"\n");
             System.out.println("1 - Commercial" + "\n");
             System.out.println("2 - Technicien" + "\n");
             System.out.println("3 - Client" + "\n");
             Scanner sc = new Scanner(System.in);
             int choixStatut = sc.nextInt();
             
+            Utilisateur currentUser = null;
             if (choixStatut == 1){
-                Utilisateur actualUser = new Commercial(conn);
+                currentUser = new Commercial(conn);
             }else if(choixStatut == 2){
-                Utilisateur actualUser = new Technicien(conn);
+                currentUser = new Technicien(conn);
             }else{
-                Utilisateur actualUser = new Client(conn);
-            }
+                currentUser = new Client(conn);
+            }*/
+            
+            LoginWindow logWin = new LoginWindow();
+            logWin.setVisible(true);
             
         }catch(Exception e){
             System.out.println(e);   
