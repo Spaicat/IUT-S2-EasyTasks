@@ -28,7 +28,7 @@ public class Clients {
             
             while(result.next()){
                 for(int i = 1; i<= resultMeta.getColumnCount(); i++)
-                    System.out.println(result.getObject(i).toString()+" | ");
+                    System.out.print(result.getObject(i).toString()+" | ");
                 System.out.println();
             }
         }catch(Exception e){
