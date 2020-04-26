@@ -20,7 +20,10 @@ public abstract class Utilisateur {
     String password;
     String statut; // Client / Commercial / Technicien
     
-    public Utilisateur(){
+    public Utilisateur(String login, String password, String statut){
+        this.login = login;
+        this.password = password;
+        this.statut = statut;
         /*Boolean sortie = false;
         while(sortie == true){
         Scanner sc = new Scanner(System.in);
@@ -56,5 +59,9 @@ public abstract class Utilisateur {
         }catch(Exception e){
             System.out.println(e);
         }*/
-        }
+    }
+    
+    public String toString() {
+        return this.login + " / " + this.password + " / " + this.statut;
+    }
 }

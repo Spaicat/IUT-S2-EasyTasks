@@ -56,8 +56,7 @@ public class EasyTask {
                 currentUser = new Client(conn);
             }*/
             
-            LoginWindow logWin = new LoginWindow();
-            logWin.setVisible(true);
+            LoginWindow logWin = new LoginWindow(conn);
             
         }catch(Exception e){
             System.out.println(e);   

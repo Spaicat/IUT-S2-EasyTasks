@@ -17,8 +17,9 @@ import java.util.Scanner;
 public class Commercial extends Utilisateur{
     private int ID;
     
-    public Commercial(Connection conn){
-        Boolean sortie = false;
+    public Commercial(String login, String password) {
+        super(login, password, "commercial");
+        /*Boolean sortie = false;
         
         while(sortie == true){
             Scanner sc = new Scanner(System.in);
@@ -55,6 +56,6 @@ public class Commercial extends Utilisateur{
             }catch(Exception e){
                 System.out.println(e);
             }
-        }  
+        }*/
     }
 }

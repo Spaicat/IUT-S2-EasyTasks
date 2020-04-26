@@ -23,8 +23,9 @@ public class Technicien extends Utilisateur{
     private String login;
     private String password;
     
-    public Technicien(Connection conn){
-        this.competences = new ArrayList<Compétence>();
+    public Technicien(String login, String password) {
+        super(login, password, "technicien");
+        /*this.competences = new ArrayList<Compétence>();
         this.Horaires = new ArrayList<Travail>();
         
         Boolean sortie = false;
@@ -64,6 +65,6 @@ public class Technicien extends Utilisateur{
         }catch(Exception e){
             System.out.println(e);
         }
-        }
+        }*/
     }
 }

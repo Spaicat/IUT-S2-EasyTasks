@@ -18,8 +18,9 @@ import java.util.Scanner;
 public class Client extends Utilisateur{
     private int ID;
 
-    public Client(Connection conn){
-        Boolean sortie = false;
+    public Client(String login, String password) {
+        super(login, password, "client");
+        /*Boolean sortie = false;
         
         while(sortie == true){
             Scanner sc = new Scanner(System.in);
@@ -56,6 +57,6 @@ public class Client extends Utilisateur{
             }catch(Exception e){
                 System.out.println(e);
             }
-        } 
+        }*/
     }
 }
