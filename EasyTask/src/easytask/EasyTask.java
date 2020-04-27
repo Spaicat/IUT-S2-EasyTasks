@@ -11,6 +11,10 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 /**
  *
  * @author itsia
@@ -59,10 +63,8 @@ public class EasyTask {
             LoginWindow logWin = new LoginWindow(conn);
             
         }catch(Exception e){
-            System.out.println(e);   
+            JOptionPane.showMessageDialog(null, e.toString(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }
     
 }
