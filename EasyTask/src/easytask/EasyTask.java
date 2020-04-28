@@ -59,7 +59,6 @@ public class EasyTask {
             }else{
                 currentUser = new Client(conn);
             }*/
-            
             LoginWindow logWin = new LoginWindow(conn);
             
         }catch(Exception e){

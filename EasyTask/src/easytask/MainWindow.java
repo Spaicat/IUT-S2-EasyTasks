@@ -5,17 +5,24 @@
  */
 package easytask;
 
+import java.awt.Color;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Thibault
  */
 public class MainWindow extends javax.swing.JFrame {
+    private int mousepX;
+    private int mousepY;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -28,68 +35,127 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelTopBar = new javax.swing.JPanel();
+        jLabelLogoTop = new javax.swing.JLabel();
+        jLabelExit = new javax.swing.JLabel();
+        jLabelMinimize = new javax.swing.JLabel();
+        jPanelAside = new javax.swing.JPanel();
+        jPanelMainComponent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setTitle("EasyTasks");
+        setUndecorated(true);
         setSize(new java.awt.Dimension(1280, 720));
 
+        jPanelMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanelMain.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(51, 255, 51));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1280, 50));
+        jPanelTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelTopBar.setPreferredSize(new java.awt.Dimension(1280, 50));
+        jPanelTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelTopBarMouseDragged(evt);
+            }
+        });
+        jPanelTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelTopBarMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+        jLabelLogoTop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLogoTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoTextBlueSmall.png"))); // NOI18N
+        jLabelLogoTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabelExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/closeSmallBlue.png"))); // NOI18N
+        jLabelExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelExitMouseReleased(evt);
+            }
+        });
+
+        jLabelMinimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/minusSmallBlue.png"))); // NOI18N
+        jLabelMinimize.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelMinimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelMinimizeMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelMinimizeMouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelTopBarLayout = new javax.swing.GroupLayout(jPanelTopBar);
+        jPanelTopBar.setLayout(jPanelTopBarLayout);
+        jPanelTopBarLayout.setHorizontalGroup(
+            jPanelTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopBarLayout.createSequentialGroup()
+                .addComponent(jLabelLogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 976, Short.MAX_VALUE)
+                .addComponent(jLabelMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+        jPanelTopBarLayout.setVerticalGroup(
+            jPanelTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelLogoTop, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jLabelExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelMinimize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanelMain.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        jPanelMain.add(jPanelTopBar, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setBackground(new java.awt.Color(255, 102, 102));
-        jPanel4.setPreferredSize(new java.awt.Dimension(200, 670));
+        jPanelAside.setBackground(new java.awt.Color(0, 184, 162));
+        jPanelAside.setPreferredSize(new java.awt.Dimension(200, 670));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelAsideLayout = new javax.swing.GroupLayout(jPanelAside);
+        jPanelAside.setLayout(jPanelAsideLayout);
+        jPanelAsideLayout.setHorizontalGroup(
+            jPanelAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 200, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+        jPanelAsideLayout.setVerticalGroup(
+            jPanelAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 666, Short.MAX_VALUE)
         );
 
-        jPanelMain.add(jPanel4, java.awt.BorderLayout.LINE_START);
+        jPanelMain.add(jPanelAside, java.awt.BorderLayout.LINE_START);
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 0));
+        jPanelMainComponent.setBackground(new java.awt.Color(214, 227, 225));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelMainComponentLayout = new javax.swing.GroupLayout(jPanelMainComponent);
+        jPanelMainComponent.setLayout(jPanelMainComponentLayout);
+        jPanelMainComponentLayout.setHorizontalGroup(
+            jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1076, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+        jPanelMainComponentLayout.setVerticalGroup(
+            jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 666, Short.MAX_VALUE)
         );
 
-        jPanelMain.add(jPanel5, java.awt.BorderLayout.CENTER);
+        jPanelMain.add(jPanelMainComponent, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,45 +165,57 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jPanelTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelTopBarMousePressed
+        mousepX = evt.getX();
+        mousepY = evt.getY();
+    }//GEN-LAST:event_jPanelTopBarMousePressed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
-        });
-    }
+    private void jPanelTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelTopBarMouseDragged
+        int coordX = evt.getXOnScreen();
+        int coordY = evt.getYOnScreen();
+
+        this.setLocation(coordX-this.mousepX, coordY-this.mousepY);
+    }//GEN-LAST:event_jPanelTopBarMouseDragged
+
+    private void jLabelExitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseReleased
+        System.exit(0);
+    }//GEN-LAST:event_jLabelExitMouseReleased
+
+    private void jLabelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseExited
+        jLabelExit.setBackground(new Color(0,0,0));
+        jLabelExit.setOpaque(false);
+        jLabelExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/closeSmallBlue.png")));
+    }//GEN-LAST:event_jLabelExitMouseExited
+
+    private void jLabelExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelExitMouseEntered
+        jLabelExit.setBackground(new Color(208,2,28));
+        jLabelExit.setOpaque(true);
+        jLabelExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/closeSmallWhite.png")));
+    }//GEN-LAST:event_jLabelExitMouseEntered
+
+    private void jLabelMinimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinimizeMouseEntered
+        jLabelMinimize.setBackground(new Color(211,211,211));
+        jLabelMinimize.setOpaque(true);
+        jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/minusSmallWhite.png")));
+    }//GEN-LAST:event_jLabelMinimizeMouseEntered
+
+    private void jLabelMinimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinimizeMouseExited
+        jLabelMinimize.setBackground(new Color(0,0,0));
+        jLabelMinimize.setOpaque(false);
+        jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/minusSmallBlue.png")));
+    }//GEN-LAST:event_jLabelMinimizeMouseExited
+
+    private void jLabelMinimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinimizeMouseReleased
+        this.setExtendedState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabelMinimizeMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel jLabelExit;
+    private javax.swing.JLabel jLabelLogoTop;
+    private javax.swing.JLabel jLabelMinimize;
+    private javax.swing.JPanel jPanelAside;
     private javax.swing.JPanel jPanelMain;
+    private javax.swing.JPanel jPanelMainComponent;
+    private javax.swing.JPanel jPanelTopBar;
     // End of variables declaration//GEN-END:variables
 }
