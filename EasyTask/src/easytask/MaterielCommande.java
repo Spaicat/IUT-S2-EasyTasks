@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author itsia
  */
-public class MaterielCommande extends Matériel{
+public class MaterielCommande extends Materiel{
     private int quantité;
     private float prix;
     private Date date;

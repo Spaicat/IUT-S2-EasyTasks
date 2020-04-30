@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class Technicien extends Utilisateur{
     private int ID;
-    private ArrayList<Compétence> competences;
+    private ArrayList<Competence> competences;
     private ArrayList<Travail> Horaires;
     private String login;
     private String password;

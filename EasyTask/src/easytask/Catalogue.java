@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * @author itsia
  */
 public class Catalogue {
-    private ArrayList<Matériel> materielList;
-    private ArrayList<ActivitéType> activiteTypeList;
+    private ArrayList<Materiel> materielList;
+    private ArrayList<ActiviteType> activiteTypeList;
     
     public Catalogue(){
-        this.materielList = new ArrayList<Matériel>();
-        this.activiteTypeList = new ArrayList<ActivitéType>();
+        this.materielList = new ArrayList<Materiel>();
+        this.activiteTypeList = new ArrayList<ActiviteType>();
     }
 }

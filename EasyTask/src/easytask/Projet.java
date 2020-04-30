@@ -17,18 +17,23 @@ import java.sql.Connection;
  */
 
 public class Projet {
+    private int ID;
+    private String nom;
     private boolean faisable;
     private float coût;
     private float rentabilité;
     private EtatProjet statut;
-    private ArrayList<Matériel> MaterielList;
-    private ArrayList<Activité> ActivitéList;
+    
     private Utilisateur Commercial;
+    private ArrayList<Materiel> MaterielList;
+    private ArrayList<Activite> ActivitéList;
     private ArrayList<Technicien> TechnicienList;
     
-    public Projet(){
-        this.MaterielList = new ArrayList<Matériel>();
-        this.ActivitéList = new ArrayList<Activité>();
+    public Projet(int id) {
+        this.ID = id;
+        
+        this.MaterielList = new ArrayList<Materiel>();
+        this.ActivitéList = new ArrayList<Activite>();
         this.TechnicienList = new ArrayList<Technicien>();
     }
     
@@ -62,7 +67,7 @@ public class Projet {
             ResultSet result = state.executeQuery(requete);
             ResultSetMetaData resultMeta = result.getMetaData();
             
-            this.Commercial.login = result.getString(0);
+            //this.Commercial.login = result.getString(0);
             
         }catch(Exception e){
             System.out.println(e);

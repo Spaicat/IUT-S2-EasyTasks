@@ -9,10 +9,10 @@ package easytask;
  *
  * @author itsia
  */
-public class ActivitéType {
+public class ActiviteType {
     private String nom;
     
-    public ActivitéType(){
+    public ActiviteType(){
         
     }
 }

@@ -7,11 +7,10 @@ package easytask;
 
 /**
  *
- * @author itsia
+ * @author Thibault
  */
-public enum EtatActivité {
-    PREVUE,
-    ENCOURS,
-    TERMINEE,
-    ANNULEE;
+public class BadPasswordError extends DaoError {
+    public BadPasswordError() {
+        super("Mot de passe incorrect");
+    }
 }

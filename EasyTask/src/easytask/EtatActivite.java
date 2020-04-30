@@ -9,8 +9,9 @@ package easytask;
  *
  * @author itsia
  */
-public enum EtatMatériel {
-    STOCK,
-    ENATTENTE,
-    MANQUANT;
+public enum EtatActivite {
+    PREVUE,
+    ENCOURS,
+    TERMINEE,
+    ANNULEE;
 }

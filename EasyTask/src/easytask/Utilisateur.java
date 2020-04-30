@@ -16,14 +16,20 @@ import java.util.Scanner;
  * @author itsia
  */
 public abstract class Utilisateur {
-    String login;
-    String password;
-    String statut; // Client / Commercial / Technicien
+    private int ID;
+    private String name;
+    private String login;
+    private String password;
+    private String passwordHash;
+    private String statut; // Client // Commercial // Technicien
     
     public Utilisateur(String login, String password, String statut){
         this.login = login;
         this.password = password;
         this.statut = statut;
+        
+        //Au début il y a aucun nom
+        this.name = login;
         /*Boolean sortie = false;
         while(sortie == true){
         Scanner sc = new Scanner(System.in);
@@ -59,6 +65,43 @@ public abstract class Utilisateur {
         }catch(Exception e){
             System.out.println(e);
         }*/
+    }
+    
+    public int getID() {
+        return this.ID;
+    }
+    public void setId(int id) {
+        this.ID = id;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getLogin() {
+        return this.login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
+    public String getPasswordHash() {
+        return this.passwordHash;
+    }
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+    
+    //ATTENTION : Cette fonction doit être supprimé mais l'implémentation des mot de passe haché n'est pas encore effective dans la base de données
+    public String getPassword() {
+        return this.password;
+    }
+    
+    public String getStatut() {
+        return this.statut;
     }
     
     public String toString() {

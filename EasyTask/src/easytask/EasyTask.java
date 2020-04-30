@@ -23,20 +23,18 @@ public class EasyTask {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        
+    public static void main(String[] args) {        
         try{
             // Etablissement de la connexion à la BDD
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver chargé");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC","root","root");
-            System.out.println("Connecté à la base de données");
+            System.out.println("Connecté à la base de données");*/
             
             //Création de la liste des clients
-            Clients listClients = new Clients(conn);
+            //Clients listClients = new Clients(conn);
             //Création de la liste des projets
-            Projets listProjet = new Projets(conn);
+            //Projets listProjet = new Projets(conn);
             
             //Connexion de l'utilisateur
             // Test possible :
@@ -59,7 +57,7 @@ public class EasyTask {
             }else{
                 currentUser = new Client(conn);
             }*/
-            LoginWindow logWin = new LoginWindow(conn);
+            new LoginWindow();
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString(), "Erreur", JOptionPane.ERROR_MESSAGE);

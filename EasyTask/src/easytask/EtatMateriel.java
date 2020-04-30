@@ -9,11 +9,8 @@ package easytask;
  *
  * @author itsia
  */
-public class Matériel {
-    private String nom;
-    private EtatMatériel état;
-    
-    public Matériel(){
-        
-    }
+public enum EtatMateriel {
+    STOCK,
+    ENATTENTE,
+    MANQUANT;
 }

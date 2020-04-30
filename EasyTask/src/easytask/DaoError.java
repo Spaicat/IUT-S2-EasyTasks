@@ -7,12 +7,10 @@ package easytask;
 
 /**
  *
- * @author itsia
+ * @author Thibault
  */
-public class Compétence {
-    private String nom;
-    
-    public Compétence(){
-        
+public class DaoError extends Exception {
+    public DaoError(String message) {
+        super(message);
     }
 }

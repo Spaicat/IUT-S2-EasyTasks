@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.Color;
 import java.sql.ResultSetMetaData;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -19,20 +21,18 @@ import javax.swing.JFrame;
 public class LoginWindow extends javax.swing.JFrame {
     private int mousepX;
     private int mousepY;
-    private Connection conn;
-    private Utilisateur currentuser = null;
+    private Utilisateur UserConnected = null;
     /**
      * Creates new form LoginWindow
      */
-    public LoginWindow(Connection conn) {
-        this.conn = conn;
+    public LoginWindow() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     
-    public Utilisateur getUser() {
-        return currentuser;
+    public Utilisateur getUserConnected() {
+        return this.UserConnected;
     }
 
     /**
@@ -314,6 +314,10 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMouseDragMouseDragged
 
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
+        Connect();
+    }//GEN-LAST:event_jButtonConnectActionPerformed
+    
+    public void Connect() {
         //On récupère le contenu des champs
         String user = jTextFieldName.getText();
         String password = jPasswordField.getText();
@@ -326,7 +330,23 @@ public class LoginWindow extends javax.swing.JFrame {
             jLabelErreur.setText("Entrez le mot de passe");
         }
         else {
+            // Les mot de passe dans la base de données ne sont pas des hash donc je met pas le hash pour l'instant
+            //password = Utils.HashPassword(password);
+            UserDAO userDao = DAOFactory.getUtilisateurDAO();
             try {
+                this.UserConnected = userDao.Read(user, password);
+                this.dispose();
+                new MainWindow(UserConnected);
+            } catch(BadUserError exUser) {
+                jLabelErreur.setText(exUser.getMessage());
+            } catch(BadPasswordError exPw) {
+                jLabelErreur.setText(exPw.getMessage());
+            } catch (DaoError ex) {
+                jLabelErreur.setText(ex.getMessage());
+            }
+            //this.UserConnected = userDao.
+            //DAO<Utilisateur> userDao = new UserDAO();
+            /*try {
                 Statement state = conn.createStatement();
                 
                 //On test s'il y a bien qu'une ligne de renvoyée
@@ -338,20 +358,19 @@ public class LoginWindow extends javax.swing.JFrame {
                     result.next();
                     switch(result.getString(3)) {
                         case "technicien":
-                            this.currentuser = new Technicien(user, password);
+                            this.UserConnected = new Technicien(user, password);
                             break;
                         case "commercial":
-                            this.currentuser = new Commercial(user, password);
+                            this.UserConnected = new Commercial(user, password);
                             break;
                         case "client":
-                            this.currentuser = new Client(user, password);
+                            this.UserConnected = new Client(user, password);
                             break;
                         default:
                             System.out.println("Erreur dans la base de données");
                     }
-                    System.out.println(this.currentuser.toString());
                     this.dispose();
-                    MainWindow mainWin = new MainWindow();
+                    MainWindow mainWin = new MainWindow(UserConnected);
                 }
                 else {
                     jLabelErreur.setText("Nom d'utilisateur ou mot de passe incorrect");
@@ -359,10 +378,9 @@ public class LoginWindow extends javax.swing.JFrame {
             } catch(Exception e) {
                 System.out.println(e);
                 jLabelErreur.setText(e.toString());
-            }
+            }*/
         }
-    }//GEN-LAST:event_jButtonConnectActionPerformed
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnect;
     private javax.swing.JLabel jLabelErreur;
