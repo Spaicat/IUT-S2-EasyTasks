@@ -24,7 +24,7 @@ public class Technicien extends Utilisateur{
     private String password;
     
     public Technicien(String login, String password) {
-        super(login, password, "technicien");
+        super(login, password, "Technicien");
         /*this.competences = new ArrayList<Compétence>();
         this.Horaires = new ArrayList<Travail>();
         

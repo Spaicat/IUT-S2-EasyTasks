@@ -47,19 +47,27 @@ public class UserDAO {
                 if (resultCount.getString(1).equals(1 + "")) {
                     ResultSet result = state.executeQuery("SELECT login, password, type_utilisateur FROM Utilisateur WHERE login='" + login + "' and password='" + password + "'");
                     result.next();
+                    ResultSet resultNomPrenom = null;
                     switch(result.getString(3)) {
                         case "technicien":
                             utilisateurRes = new Technicien(login, password);
+                            resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Technicien JOIN Utilisateur ON Technicien.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
+                            resultNomPrenom.next();
                             break;
                         case "commercial":
                             utilisateurRes = new Commercial(login, password);
+                            resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Commercial JOIN Utilisateur ON Commercial.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
+                            resultNomPrenom.next();
                             break;
                         case "client":
                             utilisateurRes = new Client(login, password);
+                            resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Client JOIN Utilisateur ON Client.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
+                            resultNomPrenom.next();
                             break;
                         default:
                             throw new DataBaseError();
                     }
+                    utilisateurRes.setName(resultNomPrenom.getString(1) + " " + resultNomPrenom.getString(2));
                 }
                 else {
                     throw new BadPasswordError();

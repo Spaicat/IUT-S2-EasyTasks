@@ -29,12 +29,29 @@ public class Projet {
     private ArrayList<Activite> ActivitéList;
     private ArrayList<Technicien> TechnicienList;
     
-    public Projet(int id) {
+    public Projet(int id, String nom) {
         this.ID = id;
+        this.nom = nom;
         
         this.MaterielList = new ArrayList<Materiel>();
         this.ActivitéList = new ArrayList<Activite>();
         this.TechnicienList = new ArrayList<Technicien>();
+    }
+    
+    public int getId() {
+        return this.ID;
+    }
+    
+    public void setId(int id) {
+        this.ID = id;
+    }
+    
+    public String getNom() {
+        return this.nom;
+    }
+    
+    public void setNom(String nom) {
+        this.nom = nom;
     }
     
     public void faisabilité(String requete, Connection conn){

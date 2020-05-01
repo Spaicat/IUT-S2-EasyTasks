@@ -18,7 +18,7 @@ public class Commercial extends Utilisateur{
     private int ID;
     
     public Commercial(String login, String password) {
-        super(login, password, "commercial");
+        super(login, password, "Commercial");
         /*Boolean sortie = false;
         
         while(sortie == true){

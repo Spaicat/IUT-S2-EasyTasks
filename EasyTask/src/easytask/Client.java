@@ -19,7 +19,7 @@ public class Client extends Utilisateur{
     private int ID;
 
     public Client(String login, String password) {
-        super(login, password, "client");
+        super(login, password, "Client");
         /*Boolean sortie = false;
         
         while(sortie == true){

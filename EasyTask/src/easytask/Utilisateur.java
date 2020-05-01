@@ -28,7 +28,7 @@ public abstract class Utilisateur {
         this.password = password;
         this.statut = statut;
         
-        //Au début il y a aucun nom
+        //S'il y a aucun nom
         this.name = login;
         /*Boolean sortie = false;
         while(sortie == true){
