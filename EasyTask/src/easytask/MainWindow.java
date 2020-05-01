@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,17 +31,57 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane1.getViewport().setBorder(null);
         jScrollPane1.setBorder(null);*/
         
+        /*DefaultTableModel modelTableProjets = new DefaultTableModel();
+        modelTableProjets.addColumn("Nom du projet");
+        modelTableProjets.addColumn("Durée estimée");
+        
+        JTable pTableProjets=new JTable(modelTableProjets){
+            public boolean isCellEditable(int row,int column){
+              return false;
+            }
+        };
+        
+        
         jLabelName.setText(UserConnected.getName());
         jLabelStatut.setText(UserConnected.getStatut());
         ProjectDAO projectDao = DAOFactory.getProjectDAO();
         try {
-            ArrayList<Projet> projectsList = projectDao.ReadProjects(UserConnected);
-            for (int i = 0; i < projectsList.size(); i++) {
-                System.out.println(projectsList.get(i).getId() + " | " + projectsList.get(i).getNom());
+            Projet[] projectsList = projectDao.ReadProjects(UserConnected);
+            for (int i = 0; i < projectsList.length; i++) {
+                modelTableProjets.addRow(new Object[]{projectsList[i].getId(), projectsList[i].getNom()});
+                System.out.println(projectsList[i].getId() + " | " + projectsList[i].getNom());
             }
         } catch (DaoError ex) {
             System.out.println(ex.toString());
         }
+        
+        jPanelProjets.add(pTableProjets);
+        jScrollPane1.setViewportView(pTableProjets);
+        
+        jLayeredPaneMain.add(jScrollPane1);
+        jLayeredPaneMain.repaint();
+        jLayeredPaneMain.revalidate();*/
+        
+        switchPanels(jPanelProjets);
+        switchTitle("Projets");
+        
+        jLabelName.setText(UserConnected.getName());
+        jLabelStatut.setText(UserConnected.getStatut());
+        ProjectDAO projectDao = DAOFactory.getProjectDAO();
+        try {
+            Projet[] projectsList = projectDao.ReadProjects(UserConnected);
+            
+            DefaultTableModel modelTableProjets = (DefaultTableModel) jTableProjets.getModel();
+            for (int i = 0; i < projectsList.length; i++) {
+                modelTableProjets.addRow(new Object[]{projectsList[i].getNom(), 500});
+                System.out.println(projectsList[i].getId() + " | " + projectsList[i].getNom());
+            }
+        } catch (DaoError ex) {
+            System.out.println(ex.toString());
+        }
+        
+        
+        
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -71,7 +113,17 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelMenu1 = new javax.swing.JPanel();
         jPanelMenu2 = new javax.swing.JPanel();
         jPanelMainComponent = new javax.swing.JPanel();
+        jPanelTitle = new javax.swing.JPanel();
+        jLabelTitle = new javax.swing.JLabel();
         jPanelCenterMain = new javax.swing.JPanel();
+        jLayeredPaneMain = new javax.swing.JLayeredPane();
+        jPanelProjets = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableProjets = new javax.swing.JTable();
+        jPanelActivites = new javax.swing.JPanel();
+        jLabelRetourButtonActivites = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableActivites = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EasyTasks");
@@ -324,17 +376,143 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanelMainComponent.setBackground(new java.awt.Color(214, 227, 225));
 
+        jPanelTitle.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelTitle.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabelTitle.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(0, 184, 162));
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle.setText("Titre");
+
+        javax.swing.GroupLayout jPanelTitleLayout = new javax.swing.GroupLayout(jPanelTitle);
+        jPanelTitle.setLayout(jPanelTitleLayout);
+        jPanelTitleLayout.setHorizontalGroup(
+            jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelTitleLayout.setVerticalGroup(
+            jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         jPanelCenterMain.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLayeredPaneMain.setLayout(new java.awt.CardLayout());
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTableProjets.setBackground(new java.awt.Color(255, 255, 255));
+        jTableProjets.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTableProjets.setForeground(new java.awt.Color(0, 0, 0));
+        jTableProjets.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nom du projet", "Durée estimée"
+            })
+            {
+                @Override
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            }
+        );
+        jTableProjets.setFocusable(false);
+        jTableProjets.setGridColor(new java.awt.Color(0, 0, 0));
+        jTableProjets.setRowHeight(30);
+        jTableProjets.setSelectionBackground(new java.awt.Color(0, 184, 162));
+        jTableProjets.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTableProjets.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProjetsMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableProjets);
+
+        javax.swing.GroupLayout jPanelProjetsLayout = new javax.swing.GroupLayout(jPanelProjets);
+        jPanelProjets.setLayout(jPanelProjetsLayout);
+        jPanelProjetsLayout.setHorizontalGroup(
+            jPanelProjetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
+        );
+        jPanelProjetsLayout.setVerticalGroup(
+            jPanelProjetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+        );
+
+        jLayeredPaneMain.add(jPanelProjets, "card2");
+
+        jLabelRetourButtonActivites.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelRetourButtonActivites.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/ArrowLeftSmallBlue.png"))); // NOI18N
+        jLabelRetourButtonActivites.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelRetourButtonActivites.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelRetourButtonActivitesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelRetourButtonActivitesMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelRetourButtonActivitesMouseReleased(evt);
+            }
+        });
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTableActivites.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nom de l'activité"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableActivites);
+
+        javax.swing.GroupLayout jPanelActivitesLayout = new javax.swing.GroupLayout(jPanelActivites);
+        jPanelActivites.setLayout(jPanelActivitesLayout);
+        jPanelActivitesLayout.setHorizontalGroup(
+            jPanelActivitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
+            .addGroup(jPanelActivitesLayout.createSequentialGroup()
+                .addComponent(jLabelRetourButtonActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelActivitesLayout.setVerticalGroup(
+            jPanelActivitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActivitesLayout.createSequentialGroup()
+                .addComponent(jLabelRetourButtonActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+        );
+
+        jLayeredPaneMain.add(jPanelActivites, "card3");
 
         javax.swing.GroupLayout jPanelCenterMainLayout = new javax.swing.GroupLayout(jPanelCenterMain);
         jPanelCenterMain.setLayout(jPanelCenterMainLayout);
         jPanelCenterMainLayout.setHorizontalGroup(
             jPanelCenterMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGroup(jPanelCenterMainLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanelCenterMainLayout.setVerticalGroup(
             jPanelCenterMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(jPanelCenterMainLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMainComponentLayout = new javax.swing.GroupLayout(jPanelMainComponent);
@@ -343,13 +521,17 @@ public class MainWindow extends javax.swing.JFrame {
             jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMainComponentLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jPanelCenterMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelCenterMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanelMainComponentLayout.setVerticalGroup(
             jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainComponentLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jPanelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanelCenterMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -456,9 +638,40 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelPowerButton.setOpaque(false);
     }//GEN-LAST:event_jLabelPowerButtonMouseExited
 
+    private void jTableProjetsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProjetsMouseClicked
+        switchPanels(jPanelActivites);
+        switchTitle("Activités");
+    }//GEN-LAST:event_jTableProjetsMouseClicked
+
+    private void jLabelRetourButtonActivitesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseEntered
+        jLabelRetourButtonActivites.setBackground(new Color(211,211,211));
+        jLabelRetourButtonActivites.setOpaque(true);
+    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseEntered
+
+    private void jLabelRetourButtonActivitesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseExited
+        jLabelRetourButtonActivites.setBackground(new Color(0,0,0));
+        jLabelRetourButtonActivites.setOpaque(false);
+    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseExited
+
+    private void jLabelRetourButtonActivitesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseReleased
+        switchPanels(jPanelProjets);
+        switchTitle("Projets");
+    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseReleased
+
     public void Disconnect() {
         this.dispose();
         LoginWindow logWin = new LoginWindow();
+    }
+    
+    public void switchPanels(JPanel panel) {
+        jLayeredPaneMain.removeAll();
+        jLayeredPaneMain.add(panel);
+        jLayeredPaneMain.repaint();
+        jLayeredPaneMain.revalidate();
+    }
+    
+    public void switchTitle(String title) {
+        jLabelTitle.setText(title);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -469,8 +682,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelPowerButton;
     private javax.swing.JLabel jLabelProfilButton;
+    private javax.swing.JLabel jLabelRetourButtonActivites;
     private javax.swing.JLabel jLabelSettingsButton;
     private javax.swing.JLabel jLabelStatut;
+    private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JLayeredPane jLayeredPaneMain;
+    private javax.swing.JPanel jPanelActivites;
     private javax.swing.JPanel jPanelAside;
     private javax.swing.JPanel jPanelAsideArrow;
     private javax.swing.JPanel jPanelBarProfilButtons;
@@ -480,6 +697,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMenu1;
     private javax.swing.JPanel jPanelMenu2;
     private javax.swing.JPanel jPanelMenuMain;
+    private javax.swing.JPanel jPanelProjets;
+    private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPanel jPanelTopBar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTableActivites;
+    private javax.swing.JTable jTableProjets;
     // End of variables declaration//GEN-END:variables
 }

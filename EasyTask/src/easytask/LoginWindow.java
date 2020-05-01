@@ -319,8 +319,11 @@ public class LoginWindow extends javax.swing.JFrame {
     
     public void Connect() {
         //On récupère le contenu des champs
-        String user = jTextFieldName.getText();
-        String password = jPasswordField.getText();
+        //String user = jTextFieldName.getText();
+        //String password = jPasswordField.getText();
+        
+        String user = "gflayol";
+        String password = "746F746F";
         
         //On test si les champs ne sont pas "vide"
         if (user.equals("Nom d'utilisateur")) {

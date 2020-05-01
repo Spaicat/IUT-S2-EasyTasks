@@ -34,7 +34,7 @@ public class ProjectDAO {
         throw new UnsupportedOperationException("ProjectDAO : Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<Projet> ReadProjects(Utilisateur user) throws DaoError {
+    public Projet[] ReadProjects(Utilisateur user) throws DaoError {
         ArrayList<Projet> projetArrayListe = new ArrayList<Projet>();
         try {
             Statement state = this.connect.createStatement();
@@ -89,6 +89,7 @@ public class ProjectDAO {
         } catch(Exception e) {
             throw new DaoError(e.getMessage());
         }
-        return projetArrayListe;
+        Projet[] projetTableu = projetArrayListe.toArray(new Projet[projetArrayListe.size()]);
+        return projetTableu;
     }
 }
