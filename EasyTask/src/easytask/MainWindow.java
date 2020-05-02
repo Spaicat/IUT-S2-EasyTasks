@@ -62,8 +62,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLayeredPaneMain.repaint();
         jLayeredPaneMain.revalidate();*/
         
-        switchPanels(jPanelProjets);
-        switchTitle("Projets");
+        jLabelTitle.setText("Projets");
         
         jLabelName.setText(UserConnected.getName());
         jLabelStatut.setText(UserConnected.getStatut());
@@ -116,14 +115,9 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelTitle = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jPanelCenterMain = new javax.swing.JPanel();
-        jLayeredPaneMain = new javax.swing.JLayeredPane();
         jPanelProjets = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProjets = new javax.swing.JTable();
-        jPanelActivites = new javax.swing.JPanel();
-        jLabelRetourButtonActivites = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableActivites = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EasyTasks");
@@ -403,8 +397,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanelCenterMain.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLayeredPaneMain.setLayout(new java.awt.CardLayout());
-
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTableProjets.setBackground(new java.awt.Color(255, 255, 255));
@@ -440,79 +432,28 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelProjets.setLayout(jPanelProjetsLayout);
         jPanelProjetsLayout.setHorizontalGroup(
             jPanelProjetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
         );
         jPanelProjetsLayout.setVerticalGroup(
             jPanelProjetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
         );
-
-        jLayeredPaneMain.add(jPanelProjets, "card2");
-
-        jLabelRetourButtonActivites.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRetourButtonActivites.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons/ArrowLeftSmallBlue.png"))); // NOI18N
-        jLabelRetourButtonActivites.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelRetourButtonActivites.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelRetourButtonActivitesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelRetourButtonActivitesMouseExited(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabelRetourButtonActivitesMouseReleased(evt);
-            }
-        });
-
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        jTableActivites.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Nom de l'activité"
-            }
-        ));
-        jScrollPane2.setViewportView(jTableActivites);
-
-        javax.swing.GroupLayout jPanelActivitesLayout = new javax.swing.GroupLayout(jPanelActivites);
-        jPanelActivites.setLayout(jPanelActivitesLayout);
-        jPanelActivitesLayout.setHorizontalGroup(
-            jPanelActivitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
-            .addGroup(jPanelActivitesLayout.createSequentialGroup()
-                .addComponent(jLabelRetourButtonActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanelActivitesLayout.setVerticalGroup(
-            jPanelActivitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActivitesLayout.createSequentialGroup()
-                .addComponent(jLabelRetourButtonActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
-        );
-
-        jLayeredPaneMain.add(jPanelActivites, "card3");
 
         javax.swing.GroupLayout jPanelCenterMainLayout = new javax.swing.GroupLayout(jPanelCenterMain);
         jPanelCenterMain.setLayout(jPanelCenterMainLayout);
         jPanelCenterMainLayout.setHorizontalGroup(
             jPanelCenterMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCenterMainLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jPanelProjets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanelCenterMainLayout.setVerticalGroup(
             jPanelCenterMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCenterMainLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jPanelProjets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMainComponentLayout = new javax.swing.GroupLayout(jPanelMainComponent);
@@ -639,39 +580,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelPowerButtonMouseExited
 
     private void jTableProjetsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProjetsMouseClicked
-        switchPanels(jPanelActivites);
-        switchTitle("Activités");
+        //TODO
+        ActivitiesWindow ActivitiesWin = new ActivitiesWindow();
     }//GEN-LAST:event_jTableProjetsMouseClicked
-
-    private void jLabelRetourButtonActivitesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseEntered
-        jLabelRetourButtonActivites.setBackground(new Color(211,211,211));
-        jLabelRetourButtonActivites.setOpaque(true);
-    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseEntered
-
-    private void jLabelRetourButtonActivitesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseExited
-        jLabelRetourButtonActivites.setBackground(new Color(0,0,0));
-        jLabelRetourButtonActivites.setOpaque(false);
-    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseExited
-
-    private void jLabelRetourButtonActivitesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRetourButtonActivitesMouseReleased
-        switchPanels(jPanelProjets);
-        switchTitle("Projets");
-    }//GEN-LAST:event_jLabelRetourButtonActivitesMouseReleased
 
     public void Disconnect() {
         this.dispose();
         LoginWindow logWin = new LoginWindow();
-    }
-    
-    public void switchPanels(JPanel panel) {
-        jLayeredPaneMain.removeAll();
-        jLayeredPaneMain.add(panel);
-        jLayeredPaneMain.repaint();
-        jLayeredPaneMain.revalidate();
-    }
-    
-    public void switchTitle(String title) {
-        jLabelTitle.setText(title);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -682,12 +597,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelPowerButton;
     private javax.swing.JLabel jLabelProfilButton;
-    private javax.swing.JLabel jLabelRetourButtonActivites;
     private javax.swing.JLabel jLabelSettingsButton;
     private javax.swing.JLabel jLabelStatut;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JLayeredPane jLayeredPaneMain;
-    private javax.swing.JPanel jPanelActivites;
     private javax.swing.JPanel jPanelAside;
     private javax.swing.JPanel jPanelAsideArrow;
     private javax.swing.JPanel jPanelBarProfilButtons;
@@ -701,9 +613,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPanel jPanelTopBar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTableActivites;
     private javax.swing.JTable jTableProjets;
     // End of variables declaration//GEN-END:variables
 }
