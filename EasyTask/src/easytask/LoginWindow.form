@@ -240,15 +240,16 @@
                 <Component class="javax.swing.JPasswordField" name="jPasswordField">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="a2" green="b8" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="EntrezLeMotDePasse"/>
+                    <Property name="text" type="java.lang.String" value="Entrez le mot de passe"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
+                    <Property name="echoChar" type="char" value="\u0000" containsInvalidXMLChars="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>

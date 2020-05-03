@@ -26,7 +26,6 @@ public class LoginWindow extends javax.swing.JFrame {
      * Creates new form LoginWindow
      */
     public LoginWindow() {
-        System.out.println(Utils.HashPassword("AB1") + "");
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -138,10 +137,11 @@ public class LoginWindow extends javax.swing.JFrame {
         jSeparatorName.setBackground(new java.awt.Color(0, 184, 162));
         jSeparatorName.setForeground(new java.awt.Color(0, 184, 162));
 
-        jPasswordField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPasswordField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPasswordField.setForeground(new java.awt.Color(0, 184, 162));
-        jPasswordField.setText("EntrezLeMotDePasse");
+        jPasswordField.setText("Entrez le mot de passe");
         jPasswordField.setBorder(null);
+        jPasswordField.setEchoChar('\u0000');
         jPasswordField.setOpaque(false);
         jPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -255,13 +255,17 @@ public class LoginWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldFocusLost
-        if (jPasswordField.getText().equals(""))
-        jPasswordField.setText("EntrezLeMotDePasse");
+        if (jPasswordField.getText().equals("")){
+            jPasswordField.setText("Entrez le mot de passe");
+            jPasswordField.setEchoChar((char)0);
+        }
     }//GEN-LAST:event_jPasswordFieldFocusLost
 
     private void jPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldFocusGained
-        if (jPasswordField.getText().equals("EntrezLeMotDePasse"))
-        jPasswordField.setText("");
+        if (jPasswordField.getText().equals("Entrez le mot de passe")){
+            jPasswordField.setText("");
+            jPasswordField.setEchoChar('\u2022');
+        }
     }//GEN-LAST:event_jPasswordFieldFocusGained
 
     private void jTextFieldNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameFocusLost
