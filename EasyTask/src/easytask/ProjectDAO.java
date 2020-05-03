@@ -30,7 +30,7 @@ public class ProjectDAO {
         return false;
     }
 
-    public Projet update(Projet obj) {
+    public void update(Projet obj) {
         throw new UnsupportedOperationException("ProjectDAO : Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -89,7 +89,7 @@ public class ProjectDAO {
         } catch(Exception e) {
             throw new DaoError(e.getMessage());
         }
-        Projet[] projetTableu = projetArrayListe.toArray(new Projet[projetArrayListe.size()]);
-        return projetTableu;
+        Projet[] projetTableau = projetArrayListe.toArray(new Projet[projetArrayListe.size()]);
+        return projetTableau;
     }
 }

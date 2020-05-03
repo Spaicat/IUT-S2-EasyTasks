@@ -6,7 +6,9 @@
 package easytask;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,11 +17,20 @@ import javax.swing.JFrame;
 public class ActivitiesWindow extends javax.swing.JFrame {
     private int mousepX;
     private int mousepY;
+    private Activite[] activitiesList;
+    private Projet currentProject;
+    private Utilisateur UserConnected;
     /**
      * Creates new form ActivitiesWindow
      */
-    public ActivitiesWindow() {
+    public ActivitiesWindow(Projet p, Utilisateur user) {
+        this.currentProject = p;
+        this.UserConnected = user;
         initComponents();
+        initDBComponents();
+        
+        jTableActivites.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -39,8 +50,10 @@ public class ActivitiesWindow extends javax.swing.JFrame {
         jLabelExit = new javax.swing.JLabel();
         jLabelMinimize = new javax.swing.JLabel();
         jPanelMainComponent = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableActivites = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         jPanelMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 184, 162), 2));
@@ -61,7 +74,7 @@ public class ActivitiesWindow extends javax.swing.JFrame {
 
         jLabelLogoTop.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabelLogoTop.setForeground(new java.awt.Color(0, 184, 162));
-        jLabelLogoTop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLogoTop.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelLogoTop.setText("Activités");
         jLabelLogoTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -100,8 +113,9 @@ public class ActivitiesWindow extends javax.swing.JFrame {
         jPanelTopBarLayout.setHorizontalGroup(
             jPanelTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTopBarLayout.createSequentialGroup()
-                .addComponent(jLabelLogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 790, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabelLogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addComponent(jLabelMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,15 +134,46 @@ public class ActivitiesWindow extends javax.swing.JFrame {
 
         jPanelMainComponent.setBackground(new java.awt.Color(214, 227, 225));
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTableActivites.setBackground(new java.awt.Color(255, 255, 255));
+        jTableActivites.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jTableActivites.setForeground(new java.awt.Color(0, 0, 0));
+        jTableActivites.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Commentaires", "Etat"
+            })
+            {
+                @Override
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            }
+        );
+        jTableActivites.setFocusable(false);
+        jTableActivites.setGridColor(new java.awt.Color(0, 0, 0));
+        jTableActivites.setRowHeight(50);
+        jTableActivites.setSelectionBackground(new java.awt.Color(0, 184, 162));
+        jTableActivites.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTableActivites.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableActivitesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableActivites);
+
         javax.swing.GroupLayout jPanelMainComponentLayout = new javax.swing.GroupLayout(jPanelMainComponent);
         jPanelMainComponent.setLayout(jPanelMainComponentLayout);
         jPanelMainComponentLayout.setHorizontalGroup(
             jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
         );
         jPanelMainComponentLayout.setVerticalGroup(
             jPanelMainComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
         );
 
         jPanelMain.add(jPanelMainComponent, java.awt.BorderLayout.CENTER);
@@ -191,6 +236,32 @@ public class ActivitiesWindow extends javax.swing.JFrame {
         this.setLocation(coordX-this.mousepX, coordY-this.mousepY);
     }//GEN-LAST:event_jPanelTopBarMouseDragged
 
+    private void jTableActivitesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableActivitesMouseClicked
+        if (evt.getClickCount() == 2) {
+            ActivityWindow ActivityWin = new ActivityWindow(activitiesList[jTableActivites.getSelectedRow()]);
+        }
+    }//GEN-LAST:event_jTableActivitesMouseClicked
+    
+    public void initDBComponents() {
+        jLabelLogoTop.setText("Activités du projet : " + currentProject.getNom());
+        
+        ActivityDAO activityDao = DAOFactory.getActiviteDAO();
+        try {
+            this.activitiesList = activityDao.ReadActivities(currentProject, UserConnected);
+            
+            DefaultTableModel modelTableActivites = (DefaultTableModel) jTableActivites.getModel();
+            for (int i = modelTableActivites.getRowCount() - 1; i >= 0; i--) {
+                modelTableActivites.removeRow(i);
+            }
+            for (int i = 0; i < activitiesList.length; i++) {
+                modelTableActivites.addRow(new Object[]{activitiesList[i].getCommentaires(), activitiesList[i].getEtat()});
+                System.out.println(activitiesList[i].getNom() + " | " + activitiesList[i].getCommentaires() + " | " + activitiesList[i].getEtat());
+            }
+        } catch (DaoError ex) {
+            System.out.println(ex.toString());
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelExit;
     private javax.swing.JLabel jLabelLogoTop;
@@ -198,5 +269,7 @@ public class ActivitiesWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMainComponent;
     private javax.swing.JPanel jPanelTopBar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableActivites;
     // End of variables declaration//GEN-END:variables
 }

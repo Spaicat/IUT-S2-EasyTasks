@@ -27,9 +27,20 @@ public class UserDAO {
     public boolean delete(Utilisateur obj) {
         return false;
     }
+    
+    /**
+     * Demande la mise à jour de l'utilisateur dans la base
+     * @param obj Utilisateur à mettre à jour
+     */
+    public void update(Utilisateur obj) {
+        try {
+            Statement state = this.connect.createStatement();
 
-    public Utilisateur update(Utilisateur obj) {
-        throw new UnsupportedOperationException("UserDAO : Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //On test s'il y a bien qu'une ligne de renvoyée
+            state.executeUpdate("UPDATE Utilisateur SET password = " + obj.getPasswordHash() + " WHERE login ='" + obj.getLogin() + "'");
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
     }
     
     public Utilisateur Read(String login, String password) throws DaoError {
@@ -52,22 +63,24 @@ public class UserDAO {
                         case "technicien":
                             utilisateurRes = new Technicien(login, password);
                             resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Technicien JOIN Utilisateur ON Technicien.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
-                            resultNomPrenom.next();
                             break;
                         case "commercial":
                             utilisateurRes = new Commercial(login, password);
                             resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Commercial JOIN Utilisateur ON Commercial.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
-                            resultNomPrenom.next();
                             break;
                         case "client":
                             utilisateurRes = new Client(login, password);
                             resultNomPrenom = state.executeQuery("SELECT prenom, nom FROM Client JOIN Utilisateur ON Client.UTILISATEUR_ID = Utilisateur.ID WHERE login='" + login + "' and password='" + password + "'");
-                            resultNomPrenom.next();
                             break;
                         default:
                             throw new DataBaseError();
                     }
-                    utilisateurRes.setName(resultNomPrenom.getString(1) + " " + resultNomPrenom.getString(2));
+                    if (resultNomPrenom.next()) {
+                        utilisateurRes.setName(resultNomPrenom.getString(1) + " " + resultNomPrenom.getString(2));
+                    }
+                    else {
+                        throw new DataBaseError();
+                    }
                 }
                 else {
                     throw new BadPasswordError();

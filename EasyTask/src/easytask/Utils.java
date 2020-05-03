@@ -18,7 +18,12 @@ public class Utils {
      * @return la valeur de hachage du mot de passe
      */
     public static String HashPassword(String pass) {
-        return Integer.parseInt(pass, 16) + "";
+        StringBuffer hex = new StringBuffer();
+        for (char temp : pass.toCharArray()) {
+            int decimal = (int) temp;
+            hex.append(Integer.toHexString(decimal));
+        }
+        return hex.toString();
     }
     
     /**
@@ -29,8 +34,8 @@ public class Utils {
     public static boolean IsPasswordSafe(String pass) {
         boolean contientLettre = false;
         boolean contientChiffre = false;
-        int i = pass.length();
-        while (i > 0 && !(contientLettre && contientChiffre)) {
+        int i = pass.length()-1;
+        while (i >= 0 && !(contientLettre && contientChiffre)) {
             if (Character.isDigit(pass.charAt(i)))
                 contientChiffre = true;
             else if (Character.isLetter(pass.charAt(i))) {

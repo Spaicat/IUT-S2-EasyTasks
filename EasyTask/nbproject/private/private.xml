@@ -4,18 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/DAOFactory.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Utils.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Utilisateur.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/MainWindow.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ProjectDAO.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/UserDAO.java</file>
             <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/LoginWindow.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ActiviteType.java</file>
             <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ActivitiesWindow.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Utils.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ActivityWindow.java</file>
             <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Activite.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Projet.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/EasyTask.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/EtatActivite.java</file>
-            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/Projets.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/MainWindow.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ActivityDAO.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ProfileWindow.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/UserDAO.java</file>
+            <file>file:/F:/Travail/1er%20année%20DUT/Projets/Projet%20tutoré%20S2/projetTutS2/EasyTask/src/easytask/ProjectDAO.java</file>
         </group>
     </open-files>
 </project-private>

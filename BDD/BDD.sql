@@ -668,3 +668,7 @@ insert into nécessite values
 (4,2,15,'2020-03-01','2020-06-15',250),
 (3,8,5,'2019-05-01','2019-06-17',125)
 ;
+
+
+insert into Utilisateur values(34,'UtilisateurTest','Test','technicien'); -- Mot de passe actuel : 123456789A
+insert into Technicien values(11,'Test','Utilisateur',30,'junior',34);

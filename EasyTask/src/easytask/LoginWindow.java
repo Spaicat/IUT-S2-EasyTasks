@@ -26,6 +26,7 @@ public class LoginWindow extends javax.swing.JFrame {
      * Creates new form LoginWindow
      */
     public LoginWindow() {
+        System.out.println(Utils.HashPassword("AB1") + "");
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -319,11 +320,14 @@ public class LoginWindow extends javax.swing.JFrame {
     
     public void Connect() {
         //On récupère le contenu des champs
-        //String user = jTextFieldName.getText();
-        //String password = jPasswordField.getText();
+        String user = jTextFieldName.getText();
+        String password = jPasswordField.getText();
         
-        String user = "gflayol";
-        String password = "746F746F";
+        //String user = "gflayol";
+        //String password = "toto";
+        
+        //String user = "pmartin";
+        //String password = "toto";
         
         //On test si les champs ne sont pas "vide"
         if (user.equals("Nom d'utilisateur")) {
@@ -333,8 +337,8 @@ public class LoginWindow extends javax.swing.JFrame {
             jLabelErreur.setText("Entrez le mot de passe");
         }
         else {
-            // Les mot de passe dans la base de données ne sont pas des hash donc je met pas le hash pour l'instant
-            //password = Utils.HashPassword(password);
+            // Les mots de passe dans la base de données ne sont pas des hash donc je met pas le hash pour l'instant
+            password = Utils.HashPassword(password);
             UserDAO userDao = DAOFactory.getUtilisateurDAO();
             try {
                 this.UserConnected = userDao.Read(user, password);
