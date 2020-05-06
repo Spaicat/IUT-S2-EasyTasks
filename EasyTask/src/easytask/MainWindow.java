@@ -295,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelButtonName2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabelButtonName2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelButtonName2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelButtonName2.setText("Paramètes");
+        jLabelButtonName2.setText("Paramètres");
         jLabelButtonName2.setMaximumSize(new java.awt.Dimension(37, 40));
         jLabelButtonName2.setMinimumSize(new java.awt.Dimension(37, 40));
         jLabelButtonName2.setPreferredSize(new java.awt.Dimension(37, 40));
