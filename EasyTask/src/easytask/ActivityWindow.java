@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Marion, Yaning, Loïs
  */
 public class ActivityWindow extends javax.swing.JFrame {
     private int mousepX;

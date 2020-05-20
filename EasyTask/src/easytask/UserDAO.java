@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 /**
  * Classe gérant le stockage dans le SGBD des objets User
- * @author Thibault
+ * @author Thibault, Yaning, Marion
  */
 public class UserDAO {
     private Connection connect;

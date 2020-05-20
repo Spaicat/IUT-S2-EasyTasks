@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Loïs, Marion
  */
 public class ActivitiesWindow extends javax.swing.JFrame {
     private int mousepX;

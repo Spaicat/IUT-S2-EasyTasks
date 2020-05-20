@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Marion, Loïs
  */
 public class ActivityDAO {
     private Connection connect;

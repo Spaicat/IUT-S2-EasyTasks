@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author itsia
+ * @author Marion, Thibault, Yaning
  */
 public class Activite {
     private int ID;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Marion, Yaning
  */
 public class ProjectDAO {
     private Connection connect;
