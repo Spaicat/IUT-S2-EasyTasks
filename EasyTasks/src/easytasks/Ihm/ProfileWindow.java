@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Marion, Yaning
  */
 public class ProfileWindow extends javax.swing.JFrame {
     private int mousepX;

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Thibault
+ * @author Thibault, Marion
  */
 public class MainWindow extends javax.swing.JFrame {
     private int mousepX;
